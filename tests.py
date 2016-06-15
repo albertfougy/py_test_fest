@@ -2,6 +2,7 @@ import csv
 import os
 import random
 import re
+import subprocess
 from unittest import TestCase
 
 
@@ -42,8 +43,10 @@ class LeagueBuilderTests(TestCase):
 
     def _run_code(self):
         '''Execute the student's code directly'''
-        code = open("league_builder.py").read()
-        exec(code)
+        subprocess.run([
+            "python",
+            os.path.join(self.current_dir, "league_builder.py")
+        ])
 
     def _cleanup(self):
         '''Delete any generated text files'''
@@ -86,6 +89,7 @@ class LeagueBuilderTests(TestCase):
 
     def test_main_block(self):
         '''Make sure importing the file doesn't create the letters'''
+        self._cleanup()
         import league_builder
         self.assertFalse(os.path.exists(os.path.join(
             self.current_dir,

@@ -1,4 +1,3 @@
-import sys
 import csv
 
 
@@ -17,7 +16,7 @@ def average_team_height(team):
 
     try:
         avg = height_total / len(team)
-    except ZeroDivisionError as zde:
+    except ZeroDivisionError:
         avg = 0
 
     return avg
@@ -189,7 +188,7 @@ if __name__ == '__main__':
     raptors = {'name': 'raptors', 'players': []}
     league = []  # the league will simply be a list of teams
 
-    available_players = get_players_from_file(sys.argv[1])  # create list of players from file specified in command line argument
+    available_players = get_players_from_file("soccer_players.csv")  # create list of players from file specified in command line argument
 
     # split all players based on experience
     experienced = []
