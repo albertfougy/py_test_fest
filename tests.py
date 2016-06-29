@@ -43,16 +43,16 @@ class LeagueBuilderTests(TestCase):
 
     def _run_code(self):
         '''Execute the student's code directly'''
-        subprocess.run([
+        subprocess.call([
             "python",
             os.path.join(self.current_dir, "league_builder.py")
         ])
 
     def _cleanup(self):
         '''Delete any generated text files'''
-        for filename in os.scandir(self.current_dir):
-            if filename.is_file() and filename.name.endswith('.txt'):
-                os.remove(os.path.join(self.current_dir, filename.name))
+        for filename in os.listdir(self.current_dir):
+            if filename.endswith('.txt'):
+                os.remove(os.path.join(self.current_dir, filename))
 
     def test_collections_exist(self):
         '''Test that the expected collections exist'''
