@@ -44,7 +44,7 @@ class LeagueBuilderTests(TestCase):
     def _run_code(self):
         '''Execute the student's code directly'''
         subprocess.run([
-            "python",
+            "python3",
             os.path.join(self.current_dir, "league_builder.py")
         ])
 
